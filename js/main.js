@@ -381,6 +381,95 @@ if (modal) {
 // Experience data
 // ============================================================
 const experienceData = {
+    abacus: {
+        title: 'Business Analyst Intern — Abacus Insights',
+        content: `
+            <h4>The company</h4>
+            <p>Abacus builds healthcare data infrastructure for insurance payers — consolidating fragmented claims and clinical data so plans can actually use it. I sat on the Product team for the summer, reporting to a Senior Director of Product Strategy.</p>
+            <h4>Project 1 — preparing a claims dataset for a GenAI product</h4>
+            <p>An engineering proof-of-concept was blocked because the data underneath it wasn't complete, and nobody had established exactly what was missing or why.</p>
+            <ul>
+                <li>Profiled four linked claims tables — roughly 300 columns across 4M+ rows — in Databricks using Spark SQL, inventorying every null and missing field, split by claim type</li>
+                <li>Built a field-availability matrix and classified each gap by cause: missing at the source, a mapping defect, or a formatting problem. Tracing it back confirmed the source data never contained the lifecycle dates the product needed</li>
+                <li>Interviewed subject-matter experts on claims processing rules — prompt-pay windows, first-pass rates, adjudication ordering — and translated them into a probabilistic model of realistic claim scenarios</li>
+                <li>Wrote a Python generator (pandas + PySpark) with validation built in, and populated six fields across 4,027,321 rows via a set-based Delta MERGE. Zero nulls and zero ordering violations after load</li>
+                <li>Designed the write to be idempotent and non-destructive, keyed so engineering can re-run it on monthly data refreshes after I left</li>
+                <li>Authored the gap-inventory and synthesis specification that became the project's main working document, used to structure the team's ticket backlog</li>
+            </ul>
+            <h4>Project 2 — backfilling a healthcare reference-data library</h4>
+            <p>Building an in-house library of authoritative healthcare code sets, replacing reliance on an external reference-data vendor.</p>
+            <ul>
+                <li>Sourced, validated, and documented seven code sets from government and licensed origins — CMS geographic and rate files, Census geographies, diagnosis code sets — establishing the runbook template for the remaining library</li>
+                <li>Caught wrong-artifact sourcing traps: geospatial boundary files linked where flat data tables were needed, and ZIP Code Tabulation Areas confused with postal ZIP codes</li>
+                <li>Flagged ingestion traps that silently corrupt data — identifiers with leading zeros need string typing, not numeric — and ran format and loadability checks so sets land in Databricks intact</li>
+                <li>Researched licensing for gated clinical vocabularies and proposed a compliant, non-person-dependent credential model rather than the convenient shortcut of using one individual's license</li>
+                <li>Surfaced a definition-versus-file mismatch on one code set and documented the distinguishing criteria for the product owner to resolve</li>
+            </ul>
+            <h4>What I took from it</h4>
+            <p>Most of the work in analytics happens before modeling. Profiling the data, understanding why it looks the way it does, and documenting it so the next person isn't starting over — that's the job. Also learned to diagnose root cause before proposing a fix, and that the difference between an analyst and a contributor is anticipating what happens after you hand something off.</p>
+            <h4>Stack</h4>
+            <p>Databricks (Spark SQL, PySpark, Delta Lake, Unity Catalog), Python (pandas), SQL, Jira, Confluence, Agile</p>
+        `
+    },
+    sfab: {
+        title: 'Board Member — Student Fee Activity Board, Purdue Student Government',
+        content: `
+            <h4>Role overview</h4>
+            <p>SFAB is the subcommittee that allocates Purdue's mandatory undergraduate student activity fee — a multi-million-dollar annual budget distributed across student organizations campus-wide.</p>
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>Review 15–30 funding applications per cycle against written guidelines, assessing budget justification and event feasibility</li>
+                <li>Deliberate allocations during the annual review weekend, where organizations present their cases directly to the board</li>
+                <li>Conduct event audits and co-facilitate workshops helping student orgs navigate the funding process</li>
+            </ul>
+            <h4>Viewpoint neutrality</h4>
+            <p>The core discipline of the role: decisions are made solely on guideline criteria, independent of an organization's identity, mission, or funding history. A vague application gets denied no matter how sympathetic the cause; a group that got funded last year gets no advantage this year. When funds run short, cuts are made neutrally across the board rather than by preference.</p>
+            <h4>Why it pairs with the Treasurer job</h4>
+            <p>Both sides of the table. At F1@Purdue I write the funding requests; at SFAB I evaluate them. Reading 30 applications a cycle teaches you fast what makes a budget credible — and what makes a reviewer stop reading.</p>
+        `
+    },
+    econ260: {
+        title: 'Teaching Assistant — ECON 260 Statistical Inference, Purdue',
+        content: `
+            <h4>Role overview</h4>
+            <p>Supporting undergraduate statistical inference — my second TA appointment at Purdue, after two semesters with ECON 252 Macroeconomics.</p>
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>Weekly office hours and one-on-one support</li>
+                <li>Leading review sessions ahead of exams</li>
+                <li>Grading assignments with detailed feedback</li>
+                <li>Working with the instructor to identify which concepts students struggle with most, and addressing them directly</li>
+            </ul>
+            <h4>Topics</h4>
+            <p>Probability, sampling distributions, confidence intervals, hypothesis testing, and regression analysis — the statistical toolkit underneath most of what's in my garage.</p>
+        `
+    },
+    search: {
+        title: 'Social Media Lead — Purdue SEARCH Club',
+        content: `
+            <h4>Role overview</h4>
+            <p>Managed digital engagement and outreach for the club across a spring semester.</p>
+            <h4>Responsibilities</h4>
+            <ul>
+                <li>Planned and wrote content across the club's channels</li>
+                <li>Ran outreach campaigns for events and recruitment</li>
+                <li>Tracked what actually drove attendance rather than what drove likes</li>
+            </ul>
+        `
+    },
+    tye: {
+        title: 'Team Lead — TiE TYE Program, Ahmedabad',
+        content: `
+            <h4>Role overview</h4>
+            <p>TiE's Young Entrepreneurs program: a structured startup accelerator for students, run in Ahmedabad the year before I came to Purdue.</p>
+            <h4>What we did</h4>
+            <ul>
+                <li>Led a team from a blank page through ideation, market research, and business model to a full pitch</li>
+                <li>Reached the final round among 10+ competing teams</li>
+                <li>My first time building a business case rather than just a product — figuring out who pays, why, and what it costs to reach them</li>
+            </ul>
+        `
+    },
     f1purdue: {
         title: 'Treasurer — F1@Purdue',
         content: `
