@@ -85,4 +85,23 @@
             step('07', 'Stack',
                 `<p>Python · FastF1 · pandas · matplotlib · seaborn</p>`)
     };
+        /* ---------- URGC Tour Guide ---------- */
+    if (typeof experienceData !== 'undefined') {
+        experienceData['urgc'] = {
+            title: 'Tour Guide — University Residences Guest Center, Purdue',
+            content: `
+                <h4>Role overview</h4>
+                <p>Purdue's Guest Center runs tours of University Residences for prospective students and their families — the visit that often decides whether someone enrolls. Tour guides lead those walking tours and host at the Guest Center between them.</p>
+                <h4>What the job actually is</h4>
+                <ul>
+                    <li>Lead walking tours of residence halls and dining courts, adjusting the route and the pitch to whoever is in front of me</li>
+                    <li>Answer questions cold — on housing, dining, cost, campus life — from people who have never been here before</li>
+                    <li>Host guests at the Guest Center between tours, and attend staff training and committee work</li>
+                </ul>
+                <h4>Why it matters to me</h4>
+                <p>Three years ago I was the one on the other side of this tour, having flown in from Ahmedabad with no idea what any of it meant. Doing it from this side is the closest thing to paying that back.</p>
+                <p>Professionally it's the same skill as the rest of my work: take something complicated, figure out what this particular audience needs from it, and say it clearly the first time. A family touring a dining court and a stakeholder reading a data-quality report want the same thing — the version that's actually useful to them.</p>
+            `
+        };
+    }
 })();
