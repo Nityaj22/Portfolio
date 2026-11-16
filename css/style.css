@@ -1067,6 +1067,7 @@ button { font-family: inherit; cursor: pointer; }
 .modal-head {
     position: sticky;
     top: 0;
+    z-index: 2;
     background: var(--paper);
     display: flex;
     justify-content: space-between;
