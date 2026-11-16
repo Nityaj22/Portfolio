@@ -723,11 +723,11 @@ const projectData = {
     'bankruptcy-prediction': {
         title: 'Warning Signs — Predicting Next-Year Bankruptcy to Limit Investment Risk',
         tags: ['Python', 'pandas', 'scikit-learn', 'Random Forest', 'Gradient Boosting', 'LASSO', 'PR-AUC'],
-        github: '',
+        github: 'https://github.com/Nityaj22/QM474',
         content: `
             <h4>Overview</h4>
             <p>Credit analysts still screen companies with the 1968 Altman Z-score, which in this data raises about 63 false alarms for every real bankruptcy. Our team of four built a machine-learning watch list that ranks public companies by next-year bankruptcy risk, using only each company's latest annual report, so analysts can review the right borrowers first.</p>
-            <p>QM 47400 Predictive Analytics, Mitch Daniels School of Business, Purdue · Group 22-002: Jeffrey Wan, Nitya Jhaveri, Christopher Weng, Kyle Cuson · 2026 Fall Undergraduate Research Expo (Nov 17, 2026).</p>
+            <p>QM 47400 Predictive Analytics, Mitch Daniels School of Business, Purdue · Group 22-002: Jeffrey Wan, Nitya Jhaveri, Christopher Weng, Kyle Cuson · Presented at the 2026 Fall Undergraduate Research Expo, Purdue (Nov 17, 2026).</p>
             <h4>Data and the problems in it</h4>
             <ul>
                 <li>78,682 annual reports from 8,971 NYSE/NASDAQ companies, 1999–2018 (Lombardo et al., 2022)</li>
