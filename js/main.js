@@ -719,6 +719,51 @@ const projectData = {
             <h4>Architecture</h4>
             <p>Clean MVC separation — models for metrics and definitions, role-specific views, controllers coordinating the two — built for maintainability and scale.</p>
         `
+    },
+    'bankruptcy-prediction': {
+        title: 'Warning Signs — Predicting Next-Year Bankruptcy to Limit Investment Risk',
+        tags: ['Python', 'pandas', 'scikit-learn', 'Random Forest', 'Gradient Boosting', 'LASSO', 'PR-AUC'],
+        github: '',
+        content: `
+            <h4>Overview</h4>
+            <p>Credit analysts still screen companies with the 1968 Altman Z-score, which in this data raises about 63 false alarms for every real bankruptcy. Our team of four built a machine-learning watch list that ranks public companies by next-year bankruptcy risk, using only each company's latest annual report, so analysts can review the right borrowers first.</p>
+            <p>QM 47400 Predictive Analytics, Mitch Daniels School of Business, Purdue · Group 22-002: Jeffrey Wan, Nitya Jhaveri, Christopher Weng, Kyle Cuson · 2026 Fall Undergraduate Research Expo (Nov 17, 2026).</p>
+            <h4>Data and the problems in it</h4>
+            <ul>
+                <li>78,682 annual reports from 8,971 NYSE/NASDAQ companies, 1999–2018 (Lombardo et al., 2022)</li>
+                <li><strong>A leaky label:</strong> the raw data marks every year of an eventually-failed company as "failed", so a random split lets a model memorize companies — 99.4% of "failed" test rows belong to a company already seen as failed in training. We relabeled y = 1 only on each failed company's final annual report: 609 true positives, 0.77% of rows</li>
+                <li><strong>Extreme imbalance:</strong> predicting "nobody fails" scores 99.3% accuracy, so the primary metric is PR-AUC (no skill ≈ 0.008)</li>
+                <li><strong>Time drift:</strong> the split is chronological, never random — train 1999–2013, check 2014–16, and a 2017–18 test set that stayed locked until the final model was chosen</li>
+            </ul>
+            <h4>Where the signal is</h4>
+            <img src="assets/bankruptcy-signal.png" alt="Univariate ROC-AUC of the top ten ratios, failure rate by Altman zone, and failing firms' median ratios in the years before failure" loading="lazy">
+            <p class="img-caption">market value / liabilities is the strongest single signal (0.81) · distress builds for years, then accelerates</p>
+            <h4>Method</h4>
+            <ul>
+                <li>17 engineered features: Altman's five ratios, leverage and liquidity, profitability and coverage, size, and four momentum features capturing change since the previous report</li>
+                <li>One leakage-safe scikit-learn Pipeline (ratios → winsorize → impute + missing flags → standardize → model), refit inside every training fold</li>
+                <li>5 time-ordered, expanding-window CV folds; LASSO logistic baseline vs random forest and gradient boosting tuned with GridSearchCV</li>
+                <li>A pre-registered decision rule: a complex model replaces the baseline only if it wins all 5 folds and gains ≥ 0.02 mean PR-AUC — fixed before any complex model was fit</li>
+            </ul>
+            <h4>Results — held-out 2017–18, scored once</h4>
+            <ul>
+                <li><strong>Random forest:</strong> PR-AUC 0.283 (95% CI 0.19–0.41); its riskiest 5% caught 34 of 57 failures (60%)</li>
+                <li><strong>LASSO logistic:</strong> PR-AUC 0.136; 29 of 57 (51%)</li>
+                <li><strong>Altman Z:</strong> PR-AUC 0.031; 5 of 57 (9%)</li>
+                <li>In the riskiest 1% of test firms, 18 of 59 of the forest's picks actually failed — about 1 in 3</li>
+                <li>What drives it: market value / liabilities, then log market value and log total assets. The market's verdict dominates</li>
+            </ul>
+            <h4>Honest limits</h4>
+            <p>At the 5% cutoff the forest still missed 23 of 57 failures, and about 2 of every 3 flags in its top 1% were false alarms. It narrows the review list rather than replacing analyst judgment. Data end in 2018, cover public U.S. companies only, and the scores aren't yet calibrated probabilities.</p>
+            <h4>What I worked on</h4>
+            <ul>
+                <li>Rebuilt the preprocessing and EDA pipeline on the chronological split and verified every number in the abstract</li>
+                <li>Built the baseline notebook: the 17-feature engineering with an impact test, the missing-value strategy comparison, and LASSO logistic regression with feature selection inside time-ordered cross-validation</li>
+                <li>Diagnosed why log-scaled dollar features beat the raw ratios, which set up the move to tree models</li>
+                <li>Caught and fixed a subtle look-ahead leak in the exploratory analysis</li>
+                <li>Drafted the research poster and revised the abstract to answer instructor feedback</li>
+            </ul>
+        `
     }
 };
 
